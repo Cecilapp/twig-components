@@ -40,10 +40,7 @@ if (Craft::$app->request->getIsSiteRequest()) {
         Plugins::EVENT_AFTER_LOAD_PLUGINS,
         function (Event $event) {
             $twig = Craft::$app->getView()->getTwig();
-            \Performing\TwigComponents\Configuration::make($twig)
-                ->setTemplatesPath('/components')
-                ->useCustomTags()
-                ->setup();
+            \Performing\TwigComponents\Configuration::make($twig)->setup();
         }
     );
 }
@@ -80,7 +77,6 @@ final class TwigEnvironmentConfigurator
         $this->decorated->configure($environment);
         Configuration::make($environment)
             ->setTemplatesPath('/relative/directory/to/components')
-            ->useCustomTags()
             ->setup();
     }
 }
@@ -107,7 +103,6 @@ public function boot(): void
         $twig = $controller->getTwig();
         Configuration::make($twig)
             ->setTemplatesPath('namespace.pluginname::components', hint: true)
-            ->useCustomTags()
             ->useGlobalContext() // use this to keep Twig context from CMS
             ->setup();
     });
