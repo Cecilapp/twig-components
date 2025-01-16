@@ -148,11 +148,9 @@ The same behaviour can be obtained with a **special HTML syntax**.
 ```php
 Configuration::make($twig)
     ->setTemplatesPath('/relative/directory/to/components')
-    ->useCustomTags() // default is false
+    ->useCustomTags()
     ->setup();
 ```
-
-The previous example can also be used in this way:
 
 ```twig
 {# /index.twig #}
